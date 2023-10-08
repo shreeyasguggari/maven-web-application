@@ -98,13 +98,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Citi Bank Releases Nexus Repository</name>
-	      <url>http://3.7.71.159:6363/repository/citibank-release/</url>
+	      <url>http://13.232.215.16:6363/repository/citibank-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Citi Bank Snapshot Nexus Repository </name>
-	      <url>http://3.7.71.159:6363/repository/citibank-snapshot/</url>
+	      <url>http://13.232.215.16:6363/repository/citibank-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
