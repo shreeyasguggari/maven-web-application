@@ -1,0 +1,48 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                sh "git Checkout"
+            }
+
+        stage('Build') {
+            when {
+                branch 'main'
+            }
+            steps {
+                echo "Building the app from the main branch"
+                sh "ls -lrt"
+            }
+        }
+        stage('Build') {
+            when {
+                branch 'dev'
+            }
+            steps {
+                echo "Building the app from the dev branch"
+                sh "ls -lrt"
+            }
+        }
+        stage('Build') {
+            when {
+                enviroment name: 'BRANCH' , value: 'main'
+            }
+            steps {
+                echo "Building the app from the main branch"
+            }
+        }
+        stage {
+            when {
+                not {
+                    enviroment name: 'BRANCH' , value: 'dev'
+                }
+                steps {
+                    echo "Not building the app from the dev branch"
+                }
+            }
+        }
+        }
+    }
+}
