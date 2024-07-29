@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Stage1') {
+            steps {
+                echo "This is stage1"
+            }
+        }
+
+        stage('Stage2') {
+            steps {
+                try {
+                    echo "Running the test cases"
+                    sh "sleep5"
+                    sh "exit1"
+                } catch (Exception e) {
+                    echo "Got an exception need to handle it"
+                    echo "$e"
+                    testStatus = false
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploy the app to server"
+            }
+        }
+
+        stage('Notification') {
+            steps {
+                echo "Notify the error catched"
+            }
+        }
+    }
+}

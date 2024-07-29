@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'maven3.9.8'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git credentialsId: 'Git_Credentials', url: 'https://github.com/shreeyasguggari/maven-web-application.git'
+            }
+        }
+
+        stage('Build') {
+            sh "mvn clean package"
+            echo "The build is success"
+        }
+    }
+}
